@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<PropertyList>
+
+	<!--
+		Flightgear's Beechcraft Super King Air 350
+		:copyright: 2016, it0uchpods
+		:copyright: 2016, IAHM-COL
+		License: GPL2. See ./COPYING
+	-->
+  
+	<default>
+
+		<menu n="10">
+			<label>Super KingAir 350</label>
+			<enabled type="bool">true</enabled>
+
+			<item>
+				<label>Autostart</label>
+				<binding>
+					<command>property-toggle</command>
+					<property>sim/model/start-idling</property>
+				</binding>
+			</item>
+
+			<item>
+				<label>Yoke</label>
+				<binding>
+					<command>property-toggle</command>
+					<property>sim/model/yokes-visible</property>
+				</binding>
+			</item>
+
+			<item>
+				<label>Select Livery</label>
+				<binding>
+					<command>nasal</command>
+					<script>aircraft.livery.dialog.toggle()</script>
+				</binding>
+			</item>
+
+			<item>
+				<label>Immatriculation</label>
+				<binding>
+					<command>nasal</command>
+					<script>immat.immat_dialog.toggle()</script>
+				</binding>
+			</item>
+
+			<item>
+				<label>Config/Options</label>
+				<binding>
+					<command>dialog-show</command>
+                                        <dialog-name>options</dialog-name>
+				</binding>
+			</item>
+<item>
+
+                <label>System Failures</label>
+					<binding>
+                            <command>nasal</command>
+                            <script>
+                             var failures = gui.Dialog.new("sim/gui/dialogs/failures/dialog", "Aircraft/KingAir-350/Systems/failures-dlg.xml");
+                             failures.open();
+                            </script>
+                    </binding>
+            </item>
+
+<item>
+			<name>lights</name>
+			<label>Lights</label>
+				<binding>
+				<command>nasal</command>
+					<script>
+				var lights = gui.Dialog.new("sim/gui/dialogs/lights/dialog", "Aircraft/KingAir-350/Systems/lights-dlg.xml");
+				lights.open();
+					</script>
+				</binding>
+		  </item>
+
+		</menu>
+
+	</default>
+
+</PropertyList>

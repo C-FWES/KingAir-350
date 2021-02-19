@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<PropertyList>
+
+	<!--
+		Flightgear's Beechcraft Super King Air 350
+		:copyright: 2016, it0uchpods
+		:copyright: 2016, IAHM-COL
+		License: GPL2. See ./COPYING
+	-->
+  
+	<keyboard>
+
+		<key n="68">
+			<name>D</name>
+			<desc>Passenger door</desc>
+			<binding>
+				<command>nasal</command>
+				<script>doors.passenger.toggle();</script>
+			</binding>
+		</key>
+
+		<key n="127">
+			<name>Delete</name>
+			<desc>Toggle thrust reverser.</desc>
+			<binding>
+				<command>property-cycle</command>
+				<property>fdm/jsbsim/propulsion/engine[0]/reverser-angle-rad</property>
+				<value>180</value>
+				<value>0</value>
+			</binding>
+			<binding>
+				<command>property-cycle</command>
+				<property>fdm/jsbsim/propulsion/engine[1]/reverser-angle-rad</property>
+				<value>180</value>
+				<value>0</value>
+			</binding>
+		</key>
+    
+	</keyboard>
+  
+</PropertyList>

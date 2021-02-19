@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+  <sim>
+    <model>
+      <livery>
+        <name type="string">Wheels UP N800UP</name>
+        <index type="int">5</index>
+        <bodyWork>
+  	  <texture>Liveries/N800UP.png</texture>
+        </bodyWork>
+      </livery>
+    </model>
+  </sim>
+</PropertyList>

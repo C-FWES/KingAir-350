@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+  <sim>
+    <model>
+      <livery>
+        <name type="string">Chartright C-FGGE</name>
+        <index type="int">4</index>
+        <bodyWork>
+  	  <texture>Liveries/C-FGGE.png</texture>
+        </bodyWork>
+      </livery>
+    </model>
+  </sim>
+</PropertyList>

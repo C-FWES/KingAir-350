@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+
+<!--
+	File:     PW_R985.xml
+	Author:   Aero-Matic v 0.82
+
+	Inputs:
+	name:           PW_R985
+	type:           piston
+	power:          450 hp
+	augmented?      no
+	injected?       no
+	-->
+
+<!--
+    Lockheed Model 10 Electra for the Flightgear Flight Simulator
+    :copyright: 2015, Peter Brendt
+    :copyright: 2004, Curt Olson
+    License: GPL2. See ./COPYING
+-->
+
+<piston_engine name="PW_R985">
+	<minmp unit="INHG">          6.0 </minmp>
+	<maxmp unit="INHG">         28.5 </maxmp>
+	<displacement unit="IN3">  985.00 </displacement>
+	<maxhp>        450.00 </maxhp>
+	<cycles>         4.0 </cycles>
+	<idlerpm>      200.0 </idlerpm>
+	<maxrpm>      2400.0 </maxrpm>
+	<maxthrottle>    1.0 </maxthrottle><!-- Deprecated -->
+	<minthrottle>    0.1 </minthrottle><!-- Deprecated -->
+	<sparkfaildrop>  0.1 </sparkfaildrop>
+	<volumetric-efficiency> 0.85 </volumetric-efficiency>
+
+	<!-- Optional items that affect engine performance -->
+	<!-- Defining <bsfc> over-rides the built-in horsepower calculations -->
+	<bsfc>               0.30  </bsfc>
+	<stroke unit="IN">   5.1875  </stroke>
+	<bore unit="IN">     5.1875  </bore>
+	<cylinders>          9.00  </cylinders>
+	<compression-ratio>  6.00  </compression-ratio>
+
+	<boostmanual>   1 </boostmanual>
+	<numboostspeeds>2 </numboostspeeds>
+	<boostoverride> 0 </boostoverride>
+	<takeoffboost>  0 </takeoffboost> <!-- takeoff boost not used because it works poorly. -->
+
+	<ratedboost1 unit="INHG"> 18.1 </ratedboost1>
+	<ratedpower1 unit="HP">   450 </ratedpower1>
+	<ratedrpm1>               2300 </ratedrpm1>
+	<ratedaltitude1 unit="FT"> 0 </ratedaltitude1>	
+
+	<ratedboost2 unit="INHG"> 16.1 </ratedboost2>
+	<ratedpower2 unit="HP">   420 </ratedpower2>
+	<ratedrpm2>               2200 </ratedrpm2>
+	<ratedaltitude2 unit="FT"> 26400 </ratedaltitude2>	
+
+</piston_engine>
+

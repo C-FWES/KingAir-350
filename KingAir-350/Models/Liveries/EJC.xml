@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+  <sim>
+    <model>
+      <livery>
+        <name type="string">Ejercito de Colombia EJC-1126</name>
+        <index type="int">3</index>
+        <bodyWork>
+  	  <texture>Liveries/EJC.png</texture>
+        </bodyWork>
+      </livery>
+    </model>
+  </sim>
+</PropertyList>

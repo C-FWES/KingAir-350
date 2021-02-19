@@ -1,0 +1,81 @@
+<?xml version="1.0"?>
+
+<!--
+  File:     PW125B.xml
+  Author:   AeromatiC++ v 3.1.1
+
+  See: http://wiki.flightgear.org/JSBSim_Engines#FGTurboprop
+
+  Inputs:
+    name:                   PW125B
+    type:                   Turboprop Engine
+    power:                  2699.4 hp
+    inlet temperature:      816.0 degrees C
+    overall pressure ratio: 15.0:1
+
+  Outputs:
+    psfc:                   0.491 lbs/hr/hp
+    engine weight:          1464.3 lbs
+    engine length:          8.9 ft
+    engine diameter:        2.7 ft
+-->
+
+<turboprop_engine name="PW125B">
+  <milthrust unit="LBS">       2400   </milthrust>
+  <idlen1>                       60.0   </idlen1>
+  <maxn1>                       104.0   </maxn1>
+  <maxpower unit="HP">         1050   </maxpower>
+  <psfc unit="LBS/HR/HP">         0.421 </psfc>
+  <n1idle_max_delay>              1     </n1idle_max_delay>
+  <maxstartingtime>              20     </maxstartingtime>
+  <startern1>                    20     </startern1>
+  <ielumaxtorque unit="FT*LB"> 9708.3   </ielumaxtorque>
+  <itt_delay>                     0.05  </itt_delay>
+  <betarangeend>                 64     </betarangeend>
+  <reversemaxpower>              60     </reversemaxpower>
+
+  <function name="EnginePowerVC"><table>
+    <description> Engine power, function of airspeed and pressure </description>
+    <independentVar lookup="row">atmosphere/P-psf</independentVar>
+    <independentVar lookup="column">velocities/ve-kts</independentVar>
+    <tableData>
+	0	50	100	150	200	250	300
+503	0.730	0.888	0.929	0.936	0.940	0.941	0.945
+1048	0.785	0.956	1.001	1.009	1.013	1.014	1.019
+1328	0.821	1.001	1.049	1.057	1.061	1.062	1.067
+1496	0.843	1.029	1.078	1.086	1.091	1.092	1.097
+1684	0.851	1.039	1.088	1.096	1.101	1.102	1.107
+1896	0.859	1.048	1.098	1.106	1.111	1.112	1.117
+2135	0.864	1.055	1.106	1.114	1.119	1.120	1.125
+2213	0.868	1.060	1.111	1.119	1.124	1.125	1.130
+
+    </tableData>
+  </table></function>
+
+  <table name="EnginePowerRPM_N1" type="internal">
+    <description> Engine Power, function of RPM and N1 </description>
+    <tableData>
+	0	5	65	70	80	90	104
+0	.00	.50	.50	.50	.50	.50	.50
+500	.00	.50	15.81	158.05	316.11	421.48	526.85
+1000	.00	.50	25.17	228.80	457.61	602.11	752.64
+1400	.00	.50	37.79	314.88	629.76	839.68	1049.60
+1550	.00	.50	45.43	349.44	698.88	931.84	1164.80
+1700	.00	.50	53.76	384.00	768.00	1024.00	1280.00
+
+    </tableData>
+  </table>
+
+
+  <table name="ITT_N1" type="internal">
+    <description> Inter-Turbine Temperature ITT [deg C] depending on N1 and engine run (0=off / 1=running) </description>
+    <tableData>
+              0     1
+        0     0     0
+        30   90   370
+        65   180   750
+      104   300   800
+    </tableData>
+  </table>
+
+</turboprop_engine>

@@ -1,0 +1,927 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!--
+Beechcraft King Air for FG
+:copyright: 2016 Sharath Mahadevan (SM)
+:copyright: 2016 D-ECHO
+:copyright: 2016 Joshua Davidson (it0uchpods)
+:copyright: 2015 Israel Hernandez (IAHM-COL)
+:copyright: 2016 Gabriel Hernandez (GabrielYV)
+
+License: GPL2. See ./COPYING
+-->
+
+<PropertyList>
+
+	<path>KingAir.ac</path>
+
+	<nasal>
+		<load>
+			var livery_update = aircraft.livery_update.new("Aircraft/KingAir-350/Models/Liveries", 10);
+
+			var float_0 = self.getNode("sim/multiplay/generic/float[0]", 1);
+			var float_1 = self.getNode("sim/multiplay/generic/float[1]", 1);
+      
+			var crew_door = self.getNode("sim/model/door-positions/crew/position-norm", 1);
+			var passenger_door = self.getNode("sim/model/door-positions/passenger/position-norm", 1);
+     
+			crew_door.alias(float_0);
+			passenger_door.alias(float_1);
+		</load>
+
+		<unload>
+			livery_update.stop();
+			crew_door.unalias();
+			passenger_door.unalias();
+		</unload>
+	</nasal>
+
+	<!--shader-->
+	<effect>
+		<inherits-from>Aircraft/KingAir-350/Models/Effects/KingAir-350-combShaders</inherits-from>
+		<object-name>AileronsLeft</object-name>
+		<object-name>AileronsRigth</object-name>
+		<object-name>AiltrimtabLeft</object-name>
+		<object-name>AiltrimtabsRight</object-name>
+		<object-name>AxleshaftsFront</object-name>
+		<object-name>AxleshaftsLeft</object-name>
+		<object-name>AxleshaftsRight</object-name>
+		<object-name>DeicebootsHorizStab</object-name>
+		<object-name>DeicebootsWings</object-name>
+		<object-name>ElevatorsLeft</object-name>
+		<object-name>ElevatorsRight</object-name>
+		<object-name>EmergencyDoorFrame</object-name>
+		<object-name>EmergencyDoors</object-name>
+		<object-name>EngCowlStrips</object-name>
+		<object-name>Exhaust</object-name>
+		<object-name>FlapsLeft</object-name>
+		<object-name>FlapsRight</object-name>
+		<object-name>FlapstripsLeft</object-name>
+		<object-name>FlapstripsRight</object-name>
+		<object-name>FrontCargoDoorLeft</object-name>
+		<object-name>FrontCargoDoorRight</object-name>
+		<object-name>FrontCargoDoorStripsLeft</object-name>
+		<object-name>FrontCargoDoorStripsRight</object-name>
+		<object-name>FrontCowls</object-name>
+		<object-name>FrontEngineCowls</object-name>
+		<object-name>FuelCaps</object-name>
+		<object-name>Fuselage</object-name>
+		<object-name>GearDoorFront.Open1</object-name>
+		<object-name>GearDoorFront.Open2</object-name>
+		<object-name>GearDoorLeft.Open1</object-name>
+		<object-name>GearDoorLeft.Open2</object-name>
+		<object-name>GearDoorRight.Open1</object-name>
+		<object-name>GearDoorRight.Open2</object-name>
+		<object-name>GearsDoorFront.Closed</object-name>
+		<object-name>GearsDoorLeft.Closed</object-name>
+		<object-name>GearsDoorRight.Closed</object-name>
+		<object-name>Horstab</object-name>
+		<object-name>LGPistonFront</object-name>
+		<object-name>LGPistonLeft</object-name>
+		<object-name>LGPistonRight</object-name>
+		<object-name>LowerEngCowls</object-name>
+		<object-name>LowerStabFin</object-name>
+		<object-name>MainEntrance</object-name>
+		<object-name>MainEntranceTrim</object-name>
+		<object-name>MidEngineCowls</object-name>
+		<object-name>NoseCone</object-name>
+		<object-name>NoseConeStrips</object-name>
+		<object-name>NoseVents</object-name>
+		<object-name>PropCone</object-name>
+		<object-name>PropConeLeft</object-name>
+		<object-name>PropConeRight</object-name>
+		<object-name>PropConeDisks</object-name>
+		<object-name>PropLeft</object-name>
+		<object-name>PropRight</object-name>
+		<object-name>Rudder</object-name>
+		<object-name>RudHingPoints</object-name>
+		<object-name>TailLight</object-name>
+		<object-name>TailTop</object-name>
+		<object-name>TopEngineCowl</object-name>
+		<object-name>TorqueLinkBoltsFront</object-name>
+		<object-name>TorqueLinkBoltsLeft</object-name>
+		<object-name>TorqueLinkBoltsRight</object-name>
+		<object-name>TorqueLinksFront</object-name>
+		<object-name>TorqueLinksLeft</object-name>
+		<object-name>TorqueLinksRight</object-name>
+		<object-name>TrunnionFront</object-name>
+		<object-name>TrunnionLeft</object-name>
+		<object-name>TrunnionRight</object-name>
+		<object-name>VertStab</object-name>
+		<object-name>WheelsFront</object-name>
+		<object-name>WheelsLeft</object-name>
+		<object-name>WheelsRight</object-name>
+		<object-name>WingLightsLeft</object-name>
+		<object-name>Winglets</object-name>
+		<object-name>WingLightsRight</object-name>
+		<object-name>Wings</object-name>
+		<object-name>WngCowl</object-name>
+	</effect>
+
+	<effect>
+		<inherits-from>Effects/model-transparent</inherits-from>
+		<object-name>Windows</object-name>
+		<object-name>RHFastprop</object-name>
+		<object-name>RHSlowprop</object-name>
+		<object-name>LHFastprop</object-name>
+		<object-name>LHSlowprop</object-name>
+	</effect>
+      
+	<!--Propeller-->
+	<!--Left-->
+	<animation>
+		<type>spin</type>
+		<object-name>PropConeLeft</object-name>
+		<object-name>PropLeft</object-name>
+		<object-name>LHFastprop</object-name>
+		<object-name>LHSlowprop</object-name>
+		<property>/engines/engine[0]/thruster/rpm</property>
+		<factor>1</factor>
+		<axis>
+			<x>1</x>
+		</axis>
+		<center>
+			<y-m>-2.7494</y-m>
+			<z-m>-0.1808</z-m>
+		</center>
+	</animation>
+
+	<animation>
+		<type>select</type>
+		<object-name>PropLeft</object-name>
+		<condition>
+			<less-than>
+				<property>/engines/engine[0]/thruster/rpm</property>
+				<value>510</value>
+			</less-than>
+		</condition>
+	</animation>
+
+	<animation>
+		<type>select</type>
+		<object-name>LHSlowprop</object-name>
+		<condition>
+			<greater-than>
+				<property>/engines/engine[0]/thruster/rpm</property>
+				<value>490</value>
+			</greater-than>
+		</condition>
+	</animation>
+
+	<animation>
+		<type>select</type>
+		<object-name>LHFastprop</object-name>
+		<condition>
+			<greater-than>
+				<property>/engines/engine[0]/thruster/rpm</property>
+				<value>990</value>
+			</greater-than>
+		</condition>
+	</animation>
+
+	<!--Right-->
+	<animation>
+		<type>spin</type>
+		<object-name>PropConeRight</object-name>
+		<object-name>PropRight</object-name>
+		<object-name>RHFastprop</object-name>
+		<object-name>RHSlowprop</object-name>
+		<property>/engines/engine[1]/thruster/rpm</property>
+		<factor>1</factor>
+		<axis>
+			<x>1</x>
+		</axis>
+		<center>
+			<y-m>2.7957</y-m>
+			<z-m>-0.1808</z-m>
+		</center>
+	</animation>
+
+	<animation>
+		<type>select</type>
+		<object-name>PropRight</object-name>
+		<condition>
+			<less-than>
+				<property>/engines/engine[1]/thruster/rpm</property>
+				<value>510</value>
+			</less-than>
+		</condition>
+	</animation>
+
+	<animation>
+		<type>select</type>
+		<object-name>RHSlowprop</object-name>
+		<condition>
+			<greater-than>
+				<property>/engines/engine[1]/thruster/rpm</property>
+				<value>490</value>
+			</greater-than>
+		</condition>
+	</animation>
+
+	<animation>
+		<type>select</type>
+		<object-name>RHFastprop</object-name>
+		<condition>
+			<greater-than>
+				<property>/engines/engine[1]/thruster/rpm</property>
+				<value>990</value>
+			</greater-than>
+		</condition>
+	</animation>
+        
+	<!-- Livery System, outdated, in central nasal loader above -->
+	<!-- nasal>
+		<load>
+			var livery_update = aircraft.livery_update.new("Aircraft/EF-Typhoon/Models/Liveries", 10);
+		</load>
+		<unload>
+			livery_update.stop();
+		</unload>
+	</nasal -->
+
+	<animation>
+		<name>bodyWork</name>
+		<object-name>AileronsLeft</object-name>
+		<object-name>AileronsRigth</object-name>
+		<object-name>AiltrimtabLeft</object-name>
+		<object-name>AiltrimtabsRight</object-name>
+		<object-name>AxleshaftsFront</object-name>
+		<object-name>AxleshaftsLeft</object-name>
+		<object-name>AxleshaftsRight</object-name>
+		<object-name>DeicebootsHorizStab</object-name>
+		<object-name>DeicebootsWings</object-name>
+		<object-name>ElevatorsLeft</object-name>
+		<object-name>ElevatorsRight</object-name>
+		<object-name>EmergencyDoorFrame</object-name>
+		<object-name>EmergencyDoors</object-name>
+		<object-name>EngCowlStrips</object-name>
+		<object-name>Exhaust</object-name>
+		<object-name>FlapsLeft</object-name>
+		<object-name>FlapsRight</object-name>
+		<object-name>FlapstripsLeft</object-name>
+		<object-name>FlapstripsRight</object-name>
+		<object-name>FrontCargoDoorLeft</object-name>
+		<object-name>FrontCargoDoorRight</object-name>
+		<object-name>FrontCargoDoorStripsLeft</object-name>
+		<object-name>FrontCargoDoorStripsRight</object-name>
+		<object-name>FrontCowls</object-name>
+		<object-name>FrontEngineCowls</object-name>
+		<object-name>FuelCaps</object-name>
+		<object-name>Fuselage</object-name>
+		<object-name>GearDoorFront.Open1</object-name>
+		<object-name>GearDoorFront.Open2</object-name>
+		<object-name>GearDoorLeft.Open1</object-name>
+		<object-name>GearDoorLeft.Open2</object-name>
+		<object-name>GearDoorRight.Open1</object-name>
+		<object-name>GearDoorRight.Open2</object-name>
+		<object-name>GearsDoorFront.Closed</object-name>
+		<object-name>GearsDoorLeft.Closed</object-name>
+		<object-name>GearsDoorRight.Closed</object-name>
+		<object-name>Horstab</object-name>
+		<object-name>LGPistonFront</object-name>
+		<object-name>LGPistonLeft</object-name>
+		<object-name>LGPistonRight</object-name>
+		<object-name>LowerEngCowls</object-name>
+		<object-name>LowerStabFin</object-name>
+		<object-name>MainEntrance</object-name>
+		<object-name>MainEntranceTrim</object-name>
+		<object-name>MidEngineCowls</object-name>
+		<object-name>NoseCone</object-name>
+		<object-name>NoseConeStrips</object-name>
+		<object-name>NoseVents</object-name>
+		<object-name>PropCone</object-name>
+		<object-name>PropConeLeft</object-name>
+		<object-name>PropConeRight</object-name>
+		<object-name>PropConeDisks</object-name>
+		<object-name>PropLeft</object-name>
+		<object-name>PropRight</object-name>
+		<object-name>Rudder</object-name>
+		<object-name>RudHingPoints</object-name>
+		<object-name>TailLight</object-name>
+		<object-name>TailTop</object-name>
+		<object-name>TopEngineCowl</object-name>
+		<object-name>TorqueLinkBoltsFront</object-name>
+		<object-name>TorqueLinkBoltsLeft</object-name>
+		<object-name>TorqueLinkBoltsRight</object-name>
+		<object-name>TorqueLinksFront</object-name>
+		<object-name>TorqueLinksLeft</object-name>
+		<object-name>TorqueLinksRight</object-name>
+		<object-name>TrunnionFront</object-name>
+		<object-name>TrunnionLeft</object-name>
+		<object-name>TrunnionRight</object-name>
+		<object-name>VertStab</object-name>
+		<object-name>WheelsFront</object-name>
+		<object-name>WheelsLeft</object-name>
+		<object-name>WheelsRight</object-name>
+		<object-name>WingLightsLeft</object-name>
+		<object-name>Winglets</object-name>
+		<object-name>WingLightsRight</object-name>
+		<object-name>Wings</object-name>
+		<object-name>WngCowl</object-name>
+	</animation>
+
+	<animation>
+		<type>material</type>
+		<object-name>bodyWork</object-name>
+		<property-base>sim/model/livery/bodyWork</property-base>
+		<texture-prop>texture</texture-prop>
+		<texture>prototype.png</texture>
+	</animation>
+  
+	<animation>
+		<type>material</type>
+		<object-name>Windows</object-name>
+		<ambient>
+			<r>0.1</r>
+			<g>0.1</g>
+			<b>0.1</b>
+		</ambient>
+		<transparency>
+			<alpha-prop>controls/cabin/windowshader</alpha-prop>
+			<factor>0.9</factor>
+			<offset>0.1</offset>
+		</transparency>
+	</animation>
+
+	<!--DOORS-->
+	<!--Main-->
+	<animation>
+		<name>MainDoor</name>
+		<object-name>MainEntrance</object-name>
+		<object-name>MainEntranceTrim</object-name>
+	</animation>
+  
+	<animation>
+		<type>pick</type>
+		<object-name>MainDoor</object-name>
+		<visible>true</visible>
+		<action>
+			<button>0</button>
+			<repeatable>false</repeatable>
+			<binding>
+				<command>nasal</command>
+				<script>doors.passenger.toggle();</script>
+			</binding>
+		</action>
+	</animation>
+  
+	<animation>
+		<type>rotate</type>
+		<object-name>MainDoor</object-name>
+		<property>sim/model/door-positions/passenger/position-norm</property>
+		<factor> 140 </factor>
+		<axis>
+			<x1-m> 0.42057</x1-m>
+			<y1-m>-0.7659</y1-m>
+			<z1-m>-0.55186</z1-m>
+			<x2-m> 0.97302</x2-m>
+			<y2-m>-0.72215</y2-m>
+			<z2-m>-0.55283</z2-m>
+		</axis>
+	</animation>
+ 
+	<!-- 	CONTROL SURFACES -->
+	<animation>
+		<type>rotate</type>
+		<object-name>AileronsLeft</object-name>
+		<object-name>AiltrimtabLeft</object-name>
+		<property>surface-positions/left-aileron-pos-norm</property>
+		<factor>26</factor>
+		<axis>
+			<x1-m> -1.85922</x1-m>
+			<y1-m>-8.74654</y1-m>
+			<z1-m>0.15873</z1-m>
+			<x2-m> -1.3244</x2-m>
+			<y2-m>-5.25384</y2-m>
+			<z2-m>-0.23367</z2-m>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>rotate</type>
+		<object-name>AiltrimtabLeft</object-name>
+		<property>controls/flight/aileron-trim</property>
+		<factor>-26</factor>
+		<axis>
+			<x1-m> -1.29431</x1-m>
+			<y1-m>-6.45392</y1-m>
+			<z1-m>-0.11355</z1-m>
+			<x2-m> -1.09392</x2-m>
+			<y2-m>-5.26009</y2-m>
+			<z2-m>-0.25226</z2-m>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>rotate</type>
+		<object-name>AileronsRigth</object-name>
+		<object-name>AiltrimtabsRight</object-name>
+		<property>surface-positions/right-aileron-pos-norm</property>
+		<factor>26</factor>
+		<axis>
+			<x1-m> -1.85922</x1-m>
+			<y1-m>8.74654</y1-m>
+			<z1-m>0.15873</z1-m>
+			<x2-m> -1.3244</x2-m>
+			<y2-m>5.25384</y2-m>
+			<z2-m>-0.23367</z2-m>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>rotate</type>
+		<object-name>AiltrimtabsRight</object-name>
+		<property>controls/flight/aileron-trim</property>
+		<factor>26</factor>
+		<axis>
+			<x1-m> -1.29431</x1-m>
+			<y1-m>6.45392</y1-m>
+			<z1-m>-0.11355</z1-m>
+			<x2-m> -1.09392</x2-m>
+			<y2-m>5.26009</y2-m>
+			<z2-m>-0.25226</z2-m>
+		</axis>
+	</animation>
+
+	<!-- Elevator -->
+	<animation>
+		<type>rotate</type>
+		<object-name>ElevatorsLeft</object-name>
+		<object-name>ElevatorsRight</object-name>
+		<property>surface-positions/elevator-pos-norm</property>
+		<interpolation>
+			<entry>
+				<ind>-1</ind>
+				<dep>-15</dep>
+			</entry>
+			<entry>
+				<ind> 0</ind>
+				<dep>  0</dep>
+			</entry>
+			<entry>
+				<ind> 1</ind>
+				<dep> 20</dep>
+			</entry>
+		</interpolation>
+		<center>
+			<x-m> 5.90</x-m>
+			<y-m> 0.000</y-m>
+			<z-m> 2.67</z-m>
+		</center>
+		<axis>
+			<x>0.0</x>
+			<y>1.0</y>
+			<z>0.0</z>
+		</axis>
+	</animation>
+
+	<!-- RUDDER -->
+	<animation>
+		<type>select</type>
+		<object-name>Rudder</object-name>
+		<condition>
+			<property>/sim/failure-manager/controls/flight/rudder/serviceable</property>
+		</condition>
+	</animation>
+
+	<animation>
+		<type>rotate</type>
+		<object-name>Rudder</object-name>
+		<property>surface-positions/rudder-pos-norm</property>
+		<factor>25</factor>
+		<axis>
+			<x1-m> 4.87803</x1-m>
+			<z1-m>1.34078</z1-m>
+			<x2-m> 5.43983</x2-m>
+			<z2-m>2.16519</z2-m>
+		</axis>
+	</animation>
+
+
+	<!-- FLAPS -->
+	<animation>
+		<type>rotate</type>
+		<object-name>FlapsLeft</object-name>
+		<property>surface-positions/flap-pos-norm</property>
+		<factor>45</factor>
+		<axis>
+			<x1-m> -1.03544</x1-m>
+			<y1-m>-3.29118</y1-m>
+			<z1-m>-0.47175</z1-m>
+			<x2-m> -1.03544</x2-m>
+			<y2-m>-0.71071</y2-m>
+			<z2-m>-0.61722</z2-m>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>rotate</type>
+		<object-name>FlapsRight</object-name>
+		<property>surface-positions/flap-pos-norm</property>
+		<factor>-45</factor>
+		<axis>
+			<x1-m> -1.03544</x1-m>
+			<y1-m>3.29118</y1-m>
+			<z1-m>-0.47175</z1-m>
+			<x2-m> -1.03544</x2-m>
+			<y2-m>0.71071</y2-m>
+			<z2-m>-0.61722</z2-m>
+		</axis>
+	</animation>
+
+	<!-- GEAR -->
+	<animation>
+		<type>rotate</type>
+		<object-name>TrunnionFront</object-name>
+		<object-name>WheelsFront</object-name>
+		<object-name>TiresFront</object-name>
+		<object-name>TorqueLinksFront</object-name>
+		<object-name>TorqueLinkBoltsFront</object-name>
+		<object-name>LGPistonFront</object-name>
+		<object-name>AxleshaftsFront</object-name>
+		<property>gear/gear[0]/position-norm</property>
+		<interpolation>
+			<entry>	
+				<ind>0.0</ind>
+				<dep>-105</dep>
+			</entry>
+			<entry>
+				<ind>0.2</ind>
+				<dep>-100.0</dep>
+			</entry>
+			<entry>
+				<ind>1.0</ind>
+				<dep> 0.0</dep>
+			</entry>
+		</interpolation>
+		<center>
+			<x-m> -6.5365</x-m>
+			<z-m>-0.37293</z-m>
+		</center>
+		<axis>
+			<x> 0</x>
+			<y> 1</y>
+			<z> 0</z>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>translate</type>
+		<object-name>LGPistonFront</object-name>
+		<object-name>WheelsFront</object-name>
+		<object-name>TiresFront</object-name>
+		<property>gear/gear[0]/compression-norm</property>
+		<interpolation>
+			<entry>
+				<ind>0.0</ind>
+				<dep>0.000</dep>
+			</entry>
+			<entry>
+				<ind>0.5</ind>
+				<dep>0.075</dep>
+			</entry>
+			<entry>
+				<ind>1.0</ind>
+				<dep>0.219</dep>
+			</entry>
+		</interpolation>
+		<axis>
+			<x>	0</x>
+			<y>	0</y>
+			<z> 1.00</z>
+		</axis>
+	</animation>
+  
+	<animation>
+		<type>select</type>
+		<object-name>GearDoorFront.Open1</object-name>
+		<object-name>GearDoorFront.Open2</object-name>
+		<condition>
+			<greater-than>
+				<property>gear/gear[0]/position-norm</property>
+				<value>0.1</value>
+			</greater-than>
+		</condition>
+	</animation>
+
+	<animation>
+		<type>select</type>
+		<object-name>GearsDoorFront.Closed</object-name>
+		<condition>
+			<less-than>
+				<property>gear/gear[0]/position-norm</property>
+				<value>0.1</value>
+			</less-than>
+		</condition>
+	</animation>
+
+	<!-- Left Main -->
+	<animation>
+		<type>rotate</type>
+		<object-name>TrunnionLeft</object-name>
+		<object-name>WheelsLeft</object-name>
+		<object-name>TiresLeft</object-name>
+		<object-name>TorqueLinksLeft</object-name>
+		<object-name>TorqueLinksLeft2</object-name>
+		<object-name>TorqueLinksLeft3</object-name>
+		<object-name>TorqueLinkBoltsLeft</object-name>
+		<object-name>LGPistonLeft</object-name>
+		<object-name>AxleshaftsLeft</object-name>
+		<property>gear/gear[1]/position-norm</property>
+		<interpolation>
+			<entry>
+				<ind>0.0</ind>
+				<dep>105</dep>
+			</entry>
+			<entry>
+				<ind>0.2</ind>
+				<dep>100.0</dep>
+			</entry>
+			<entry>
+				<ind>1.0</ind>
+				<dep> 0.0</dep>
+			</entry>
+		</interpolation>
+		<center>
+			<x-m> -1.83231</x-m>
+			<y-m>-2.114</y-m>
+			<z-m>-0.68797</z-m>
+		</center>
+		<axis>
+			<x> 0</x>
+			<y> 1</y>
+			<z> 0</z>
+		</axis>
+	</animation>
+  
+	<animation>
+		<type>select</type>
+		<object-name>GearDoorLeft.Open1</object-name>
+		<object-name>GearDoorLeft.Open2</object-name>
+		<condition>
+			<greater-than>
+				<property>gear/gear[1]/position-norm</property>
+				<value>0.1</value>
+			</greater-than>
+		</condition>
+	</animation>
+
+	<animation>
+		<type>select</type>
+		<object-name>GearsDoorLeft.Closed</object-name>
+		<condition>
+			<less-than>
+				<property>gear/gear[1]/position-norm</property>
+				<value>0.1</value>
+			</less-than>
+		</condition>
+	</animation>
+
+	<animation>
+		<type>translate</type>
+		<object-name>LGPistonLeft</object-name>
+		<object-name>WheelsLeft</object-name>
+		<object-name>TiresLeft</object-name>
+		<property>gear/gear[1]/compression-norm</property>
+		<interpolation>
+			<entry>
+				<ind>0.0</ind>
+				<dep>0.000</dep>
+			</entry>
+			<entry>
+				<ind>0.5</ind>
+				<dep>0.075</dep>
+			</entry>
+			<entry>
+				<ind>1.0</ind>
+				<dep>0.219</dep>
+			</entry>
+		</interpolation>
+		<axis>
+			<x>	0</x>
+			<y>	0</y>
+			<z> 1.00</z>
+		</axis>
+	</animation>
+
+	<!-- Right Main -->
+	<animation>
+		<type>rotate</type>
+		<object-name>TrunnionRight</object-name>
+		<object-name>WheelsRight</object-name>
+		<object-name>TiresRight</object-name>
+		<object-name>TorqueLinksRight</object-name>
+		<object-name>TorqueLinksRight2</object-name>
+		<object-name>TorqueLinksRight3</object-name>
+		<object-name>TorqueLinkBoltsRight</object-name>
+		<object-name>LGPistonRight</object-name>
+		<object-name>AxleshaftsRight</object-name>
+		<property>gear/gear[2]/position-norm</property>
+		<interpolation>
+			<entry>
+				<ind>0.0</ind>
+				<dep>105</dep>
+			</entry>
+			<entry>
+				<ind>0.2</ind>
+				<dep>100.0</dep>
+			</entry>
+			<entry>
+				<ind>1.0</ind>
+				<dep> 0.0</dep>
+			</entry>
+		</interpolation>
+		<center>
+			<x-m> -1.83231</x-m>
+			<y-m>-2.114</y-m>
+			<z-m>-0.68797</z-m>
+		</center>
+		<axis>
+			<x> 0</x>
+			<y> 1</y>
+			<z> 0</z>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>select</type>
+		<object-name>GearDoorRight.Open1</object-name>
+		<object-name>GearDoorRight.Open2</object-name>
+		<condition>
+			<greater-than>
+				<property>gear/gear[2]/position-norm</property>
+				<value>0.1</value>
+			</greater-than>
+		</condition>
+	</animation>
+
+	<animation>
+		<type>select</type>
+		<object-name>GearsDoorRight.Closed</object-name>
+		<condition>
+			<less-than>
+				<property>gear/gear[2]/position-norm</property>
+				<value>0.1</value>
+			</less-than>
+		</condition>
+	</animation>
+
+	<animation>
+		<type>translate</type>
+		<object-name>LGPistonRight</object-name>
+		<object-name>WheelsRight</object-name>
+		<object-name>TiresRight</object-name>
+		<property>gear/gear[2]/compression-norm</property>
+		<interpolation>
+			<entry>
+				<ind>0.0</ind>
+				<dep>0.000</dep>
+			</entry>
+			<entry>
+				<ind>0.5</ind>
+				<dep>0.075</dep>
+			</entry>
+			<entry>
+				<ind>1.0</ind>
+				<dep>0.219</dep>
+			</entry>
+		</interpolation>
+		<axis>
+			<x>	0</x>
+			<y>	0</y>
+			<z> 1.00</z>
+		</axis>
+	</animation>
+  
+	<model>
+		<name>Flightdeck</name>
+		<path>Aircraft/KingAir-350/Models/flightdeck.xml</path>
+		<offsets>
+			<x-m>0</x-m>
+			<y-m>0</y-m>
+			<z-m>0</z-m>
+			<pitch-deg>0</pitch-deg>
+		</offsets>
+	</model>
+	
+	<animation>
+		<type>range</type>
+		<object-name>Flightdeck</object-name>
+		<min-m>0</min-m>
+		<max-m>100</max-m>
+	</animation>
+
+	<model>
+		<name>PAX Cabin</name>
+		<path>Aircraft/KingAir-350/Models/Cabin-seats.xml</path>
+		<offsets>
+			<x-m>0</x-m>
+			<y-m>0</y-m>
+			<z-m>0</z-m>
+			<pitch-deg>0</pitch-deg>
+		</offsets>
+	</model>
+	
+	<!-- ############ -->
+	<!-- ## Lights ## -->
+	<!-- ############ -->
+
+	<!-- Beacon -->
+	<model>
+		<path>Aircraft/KingAir-350/Models/lights/beacon.xml</path>
+		<offsets>
+			<x-m>0.0265565</x-m>
+			<y-m>0.000</y-m>
+			<z-m>0.999885</z-m>
+		</offsets>
+	</model>
+
+	<model>
+		<path>Aircraft/KingAir-350/Models/lights/beacon.xml</path>
+		<offsets>
+			<x-m>0.0265565</x-m>
+			<y-m>0.000</y-m>
+			<z-m>-0.82369</z-m>
+		</offsets>
+	</model>
+
+	<model>
+		<path>Aircraft/KingAir-350/Models/lights/Rednav.xml</path>
+		<offsets>
+			<x-m>-2.299</x-m>
+			<y-m>-8.85928</y-m>
+			<z-m>0.301037</z-m>
+		</offsets>
+	</model>
+ 
+	<model>
+		<path>Aircraft/KingAir-350/Models/lights/flash.xml</path>
+		<offsets>
+			<x-m>-2.299</x-m>
+			<y-m>-8.85928</y-m>
+			<z-m>0.301248</z-m>
+		</offsets>
+	</model>
+
+	<model>
+		<path>Aircraft/KingAir-350/Models/lights/Greennav.xml</path>
+		<offsets>
+			<x-m>-2.299</x-m>
+			<y-m>8.85928</y-m>
+			<z-m>0.301037</z-m>
+		</offsets>
+	</model>
+ 
+	<model>
+		<path>Aircraft/KingAir-350/Models/lights/flash.xml</path>
+		<offsets>
+			<x-m>-2.299</x-m>
+			<y-m>8.85928</y-m>
+			<z-m>0.301248</z-m>
+		</offsets>
+	</model>
+ 
+	<model>
+		<path>Aircraft/KingAir-350/Models/lights/flash.xml</path>
+		<offsets>
+			<x-m>5.00</x-m>
+			<y-m> 0.00000</y-m>
+			<z-m>2.71633</z-m>
+		</offsets>
+	</model>
+
+	<model>
+		<path>Aircraft/KingAir-350/Models/lights/taxilight.xml</path>
+		<offsets>
+			<x-m> -7.20 </x-m>
+			<y-m>  0.18 </y-m>
+			<z-m> -0.80 </z-m>
+			<pitch-deg> 0 </pitch-deg>
+		</offsets>
+	</model>
+  
+	<model>
+		<path>Aircraft/KingAir-350/Models/lights/landinglight.xml</path>
+		<offsets>
+			<x-m> -6.20 </x-m>
+			<y-m> -0.18 </y-m>
+			<z-m> -0.80 </z-m>
+			<pitch-deg> 1 </pitch-deg>
+		</offsets>
+	</model>	
+	
+	<!-- Lights -->
+	<animation>
+		<name>Tail Winglets light illumination</name>
+		<type>material</type>
+		<object-name>Winglets</object-name>
+		<emission>
+			<red>0.25</red>
+			<green>0.25</green>
+			<blue>0.25</blue>
+			<factor-prop>controls/lighting/logo-lights</factor-prop>
+		</emission>
+	</animation>
+	
+</PropertyList>

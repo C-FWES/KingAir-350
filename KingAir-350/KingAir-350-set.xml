@@ -1,0 +1,481 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<PropertyList>
+
+	<!-- 
+	************************************************************************
+	Flightgear's Beechcraft Super King Air 350
+	it0uchpods and IAHM-COL, 2016
+  
+	based on:
+	3D model taken from 3ds directory from FGDATA
+	************************************************************************
+	-->
+
+	<sim>
+
+		<description>Beechraft Super King Air 350</description>
+		<author>it0uchpods, IAHM-COL, SM, GabrielYV</author>
+
+		<aircraft-version>V0.00.00</aircraft-version>
+		<status>Alpha</status>
+		<!-- 
+
+		Currently: 
+		WIP for USA Tour
+
+		-->
+
+		<rating>
+			<FDM type="int">     0 </FDM>
+			<systems type="int"> 0 </systems>
+			<cockpit type="int"> 0 </cockpit>
+			<model type="int">   0 </model>
+		</rating>
+
+		<flight-model>jsb</flight-model>
+		<aero>Aero/KingAir-350</aero>
+
+	        <!-- Splash screen while loading -->
+		<startup>
+			<splash-texture>Aircraft/KingAir-350/splashScreen/KingAir-350-splash1.png</splash-texture>
+		</startup>
+
+		<!-- Settings for model -->
+		<model>
+			<!-- Path to main model file -->
+			<path>Aircraft/KingAir-350/Models/KingAir.xml</path>
+
+			<!-- JPack: push forces for Voodoomaster Pushback -->
+			<pushback>
+				<kp type="double">300</kp>
+				<ki type="double">0</ki>
+				<kd type="double">0</kd>
+				<position-norm type="double">0</position-norm>
+				<enabled type="bool">false</enabled>
+			</pushback>
+
+			<!-- String variable to hold current livery -->
+			<livery>
+				<file type="string">prototype</file>
+			</livery>
+
+		</model>
+
+		<!-- Systems -->
+		<systems>
+			<electrical>
+				<path>Aircraft/Generic/generic-electrical.xml</path>
+			</electrical>
+			<autopilot>
+				<name>IT-AUTOFLIGHT</name>
+				<path>Aircraft/KingAir-350/Systems/it-autoflight.xml</path>
+			</autopilot>
+		</systems>
+	
+		<!-- Subsection for submodels -->
+		<!-- submodels>
+			<serviceable type="bool">1</serviceable>
+			<path>Aircraft/JPack/Voodoomaster/Services/Military/MilitarySub.xml</path>
+		</submodels -->  
+
+		<!-- basic startup settings for sim -->
+		<freeze>
+			<fuel>false</fuel>	<!-- false is default -->
+		</freeze>
+
+		<fuel-fraction>0.8</fuel-fraction>
+
+		<chase-distance-m type="double" archive="y">-30.0</chase-distance-m>
+
+		<sound>
+			<path>Aircraft/KingAir-350/Sounds/KingAir-350-sound.xml</path>
+		</sound>
+
+		<autostart>
+			<started>0</started>
+		</autostart>
+
+		<!-- Flap settings -->
+		<flaps>
+			<setting> 0.00 </setting>
+			<!--setting> 0.50 </setting--> 
+			<!--setting> 1.00 </setting--> <!-- Do not use --> <!-- FDM is unstable -->
+		</flaps>
+
+		<!-- #### virtual-cockpit archive="y">true</virtual-cockpit (Not much of a virtual cockpit yet) -->
+
+		<!-- Instrumentation in sim -->
+		<instrumentation include="Systems/instrumentation.xml"></instrumentation>
+
+		<!-- MP section if exists -->
+		<multiplay>
+			<chat_display>1</chat_display>
+
+			<generic> 
+				<int   n="0"  type="int"> 0</int>                                          <!-- 0 immat -->
+				<int   n="1"  type="int"> 0</int>                                          <!-- 1 immat -->
+				<int   n="2"  type="int"> 0</int>                                          <!-- 2 immat -->
+				<int   n="3"  type="int"> 0</int>                                          <!-- 3 immat -->
+				<int   n="4"  type="int"> 0</int>                                          <!-- 4 immat -->
+				<int   n="5"  type="int"> 0</int>                                          <!-- 5 immat -->
+				<int   n="6"  type="bool">1</int>                                          <!-- 6 smoke/bomb/torpedo -->
+				<int   n="7"  type="int"> 0</int>                                          <!-- 7 color -->
+				<int   n="8"  alias="/systems/electrical/outputs/nav-lights">0</int>         <!-- 8 nav-lights -->
+				<int   n="9"  alias="/sim/model/lights/beacon/state">false</int>             <!-- 9 strobe-lights -->
+
+				<float n="0"  alias="/sim/model/door-positions/crew/position-norm"/>
+				<float n="1"  alias="/sim/model/door-positions/passenger/position-norm"/>
+				<float n="2"  alias="/position/gear-agl-m">0</float>                       <!-- altitude for MP shadow -->
+				<float n="3"  alias="/position/altitude-ft">0</float>                      <!-- altitude for Smoke/Trail -->
+				<float n="4"  alias="/sim/model/door-positions/leftbagage/position-norm"/>
+				<float n="5"  alias="/sim/model/door-positions/rightbagage/position-norm"/>
+				<float n="6"  alias="/engines/engine[0]/rpm"/>
+				<float n="7"  alias="/engines/engine[0]/cranking"/>
+				<float n="8"  alias="/engines/engine[1]/rpm"/>
+				<float n="9"  alias="/engines/engine[1]/cranking"/>
+				<float n="10" alias="/gear/gear[0]/wow/"/>
+				<float n="11" alias="/gear/gear[1]/wow/"/>
+				<float n="12" alias="/gear/gear[2]/wow/"/>
+				<float n="13" alias="/gear/gear[0]/rollspeed-ms"/>
+				<float n="14" alias="/gear/gear[1]/rollspeed-ms"/>
+				<float n="15" alias="/gear/gear[2]/rollspeed-ms"/>
+
+				<!-- For Bombable -->
+				<int type="int" n="10" alias="controls/armament/trigger">0</int>
+
+				<string n="9" type="string" />
+			</generic>
+		</multiplay>
+    
+		<!-- #### HUD section if exists -->
+    
+		<!-- Blackout rendering due to G-forces -->
+		<rendering>
+			<redout>
+				<parameters>
+					<blackout-complete-g>9.1</blackout-complete-g>
+					<blackout-onset-g>7.5</blackout-onset-g>
+				</parameters>
+			</redout>
+		</rendering>
+
+		<!-- All the views (crew stations + 1 more to allow moving around + extras like Tail Camera) -->
+
+		<view n="0">
+			<name>Pilot</name>
+			<type>lookFrom</type>
+			<internal archive="y" type="bool">true</internal>
+			<config>
+				<from-model type="bool">true</from-model>
+				<from-model-idx type="int">0</from-model-idx>
+				<ground-level-nearplane-m type="double">0.01f</ground-level-nearplane-m>
+				<x-offset-m archive="y"> -0.34 </x-offset-m> <!-- Right -->
+				<y-offset-m archive="y">  0.58 </y-offset-m> <!-- Up    -->
+				<z-offset-m archive="y"> -4.00 </z-offset-m> <!-- Back  -->
+				<pitch-offset-deg> -5 </pitch-offset-deg>
+				<heading-offset-deg> 0 </heading-offset-deg>
+				<default-field-of-view-deg> 73 </default-field-of-view-deg>
+			</config>
+		</view>
+
+		<view n="101">
+			<name>Copilot</name>
+			<type>lookfrom</type>
+			<internal archive="y">true</internal>
+			<config>
+				<from-model type="bool">true</from-model>
+				<from-model-idx type="int">0</from-model-idx>
+				<ground-level-nearplane-m type="double">0.01f</ground-level-nearplane-m>
+				<x-offset-m archive="y">  0.37 </x-offset-m> <!-- Right -->
+				<y-offset-m archive="y">  0.41 </y-offset-m> <!-- Up    -->
+				<z-offset-m archive="y"> -4.00</z-offset-m> <!-- Back  -->
+				<pitch-offset-deg> -5 </pitch-offset-deg>
+				<heading-offset-deg> 0 </heading-offset-deg>
+				<default-field-of-view-deg> 73 </default-field-of-view-deg>
+			</config>
+		</view>
+
+		<view n="102">
+			<name>Rear Passenger Seat View</name>
+			<internal archive="y">true</internal>
+			<type>lookfrom</type>
+			<config>
+				<from-model type="bool">true</from-model>
+				<ground-level-nearplane-m type="double">0.5f</ground-level-nearplane-m>
+				<x-offset-m archive="y">  0.250 </x-offset-m>	<!-- Right -->
+				<y-offset-m archive="y">  0.500 </y-offset-m>	<!-- Up    -->
+				<z-offset-m archive="y"> -0.200 </z-offset-m>	<!-- Back  -->
+				<pitch-offset-deg> -5 </pitch-offset-deg>
+				<default-field-of-view-deg> 90 </default-field-of-view-deg>
+				<dynamic-view type="bool">true</dynamic-view>
+			</config>
+		</view>
+
+    <!-- #### help text, currently only copied from C-47 -->
+    <help>
+      <title>Avro Lancaster</title>
+      <key>
+	<name>d</name>
+	<desc>Open/Close crew door</desc>
+      </key>
+      <line/>
+      <line>========== Engines Start Checklist (not updated to Lancaster yet) ==========</line>
+      <line>1 - Left tank selector -> LH</line>
+      <line>2 - Right tank selector -> RH</line>
+      <line>3 - Master battery -> ON</line>
+      <line>4 - Left booster pump -> ON (Fuel Pressure increase over 12 PSI)</line>
+      <line>5 - Right booster pump -> ON (Fuel Pressure increase over 12 PSI)</line>
+      <line>6 - Mixture -> Full Rich</line>
+      <line>7 - Throttle -> 10%</line>
+      <line>8 - Propeller-pitch -> 100%</line>
+      <line>9 - Left magneto -> BOTH</line>
+      <line>10- Right magneto -> BOTH</line>
+      <line>11- Left engine starter -> Left engine start</line>
+      <line>12- Right engine starter -> Right engine start</line>
+      <line>13- Left booster pump -> OFF</line>
+      <line>14- Right booster pump -> OFF</line>
+      <line/>
+      <line>========== Engines Autostart ==========</line>
+      <line>1 - Open Douglas DC-3 C47 dialog (Douglas DC-3 C47 > Options)</line>
+      <line>2 - Click on Autostart button</line>
+      <line>3 - Press "s" key</line>
+      <line/>
+      <line>========== Engines Stop Checklist ==========</line>
+      <line>1 - Mixture -> IDLE - CUT OFF</line>
+      <line>2 - Left magneto -> OFF</line>
+      <line>3 - Right magneto -> OFF</line>
+      <line>4 - Master battery -> OFF</line>
+      <line/>
+      <line>========== Procedures ==========</line>
+      <line>Takeoff ->Full throttle (48" Hg), Prop pitch for high RPM (2700 RPM), 1 mn. No flaps, rotate at 84 KIAS</line>
+      <line>Climbout -> Throttle for 41-42" Hg, Prop pitch for 2550 RPM, no flaps, 115 KIAS</line>
+      <line>Cruise -> trim down, Throttle for 31-33" Hg, Prop pitch for 2050 RPM</line>
+      <line>Approach and Landing -> full flaps, 105 ... 84 KIAS (1.3 VS0 = 75 KIAS)</line>
+      <line>Landing gear -> pull / push Gear Handle or press g / G key</line>
+      <line>Tail Gear lock / unlock -> click on handle or press "l" (L) toggle key</line>
+      <line/>
+      <line>========== Dual Control ==========</line>
+      <line>For a best experience, pilot and copilot need to be connected on the same server</line>
+      <line>=== Pilot select copilot ===</line>
+      <line>1 - Open Pilot dialog (Douglas DC-3 C47 > Select MP-copilot)</line>
+      <line>2 - Select one copilot available</line>
+      <line>3 - Close Pilot dialog</line>
+      <line>=== Copilot select pilot ===</line>
+      <line>1 - Open Copilot dialog (Douglas DC-3 C47 > Select MP-pilot)</line>
+      <line>2 - Select one pilot available</line>
+      <line>3 - Close Copilot dialog</line>
+      <line/>
+      <line>========== HowTo use engines handle ==========</line>
+      <line>Hold Left Mouse Button on engine handle and up/down your mouse in order to adjust setting of 2 engines</line>
+      <line>Hold Scroll Mouse Button on engine handle and up/down your mouse in order to adjust setting of 1 engine</line>
+      <line/>
+    </help>
+
+    <menubar include="Dialogs/Pilot_Menu.xml"/>
+  </sim>
+
+<it-autoflight>
+	<config>
+		<roll>
+			<umin>-0.40</umin>
+			<umax>0.60</umax>
+			<kp>0.025</kp>
+			<kp-vloc>0.025</kp-vloc>
+			<ti>10.0</ti>
+			<td>0.000001</td>
+			<pfactor-offset>0.10</pfactor-offset>
+		</roll>
+		<pitch>
+			<umin>-0.50</umin>
+			<umax>0.50</umax>
+			<kp>-0.025</kp>
+			<ti>10.0</ti>
+			<td>0.000001</td>
+		</pitch>
+		<cmd>
+			<roll-kp>-1.4</roll-kp>
+			<roll-scale>1.0</roll-scale>
+			<vorloc>-2.0</vorloc>
+			<vs>0.01</vs>
+		</cmd>
+	</config>
+	<settings>
+		<enable-stby>0</enable-stby> <!-- If disabled, LVL and V/S become active when AP on. -->
+		<pitch-mode>2</pitch-mode> <!-- 0 = Elevator trim only, 1 = Elevator only, 2 = Elevator and Autotrim -->
+		<auto-arm-alt>1</auto-arm-alt> <!-- Enable automatic altitude arm -->
+		<bank-limit>15</bank-limit> <!-- Set the bank limit -->
+	</settings>
+</it-autoflight>
+
+	<!-- Fuel and what anything else can be consumed, but normally fuel tanks -->
+	<consumables>
+		<fuel>
+
+			<tank n="0">
+				<name>outer Left wing</name>
+				<tank-num type="int">0</tank-num>
+				<level-gal_us archive="y">118</level-gal_us>
+			</tank>
+
+			<tank n="1">
+				<name>inner Left wing</name>
+				<tank-num type="int">1</tank-num>
+				<level-gal_us archive="y">118</level-gal_us>
+			</tank>
+
+			<tank n="2">
+				<name>inner right wing</name>
+				<tank-num type="int">2</tank-num>
+				<level-gal_us archive="y">118</level-gal_us>
+			</tank>
+
+			<tank n="3">
+				<name>outer right wing</name>
+				<tank-num type="int">0</tank-num>
+				<level-gal_us archive="y">118</level-gal_us>
+			</tank>
+		</fuel>
+	</consumables>
+
+	<!-- Payload section: Whatever weights -->
+	<payload>
+
+		<weight n="0">
+			<name>Pilot</name>
+			<weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[0]" />
+			<min-lb type="double">100.00</min-lb>
+			<max-lb type="double">250.00</max-lb>
+		</weight>
+
+		<weight n="1">
+			<name>Copilot</name>
+			<weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[1]" />
+			<min-lb type="double">100.00</min-lb>
+			<max-lb type="double">250.00</max-lb>
+		</weight>
+
+		<weight n="2">
+			<name>Passengers</name>
+			<weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[2]" />
+			<min-lb type="double">0.00</min-lb>
+			<max-lb type="double">1960.00</max-lb>
+		</weight>
+
+		<weight n="3">
+			<name>Baggage/Freight</name>
+			<weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[3]" />
+			<min-lb type="double">0.00</min-lb>
+			<max-lb type="double">655.00</max-lb>
+		</weight>
+
+	</payload>
+
+  <controls>
+    <engines>
+      <engine n="0">
+	<magnetos type="int">0</magnetos>
+	<rpm>0</rpm>
+	<running>false</running>
+	<boost type="bool">true</boost>
+	<oil-dilution type="bool">false</oil-dilution>
+	<cowl-flaps-cmd type="int">1</cowl-flaps-cmd>
+	<cowl-flaps-norm type="double">1</cowl-flaps-norm>
+	<cowl-flaps-pos type="double">1</cowl-flaps-pos>
+      </engine>
+      <engine n="1">
+	<magnetos type="int">0</magnetos>
+	<rpm>0</rpm>
+	<running>false</running>
+	<boost type="bool">true</boost>
+	<oil-dilution type="bool">false</oil-dilution>
+	<cowl-flaps-cmd type="int">1</cowl-flaps-cmd>
+	<cowl-flaps-norm type="double">1</cowl-flaps-norm>
+	<cowl-flaps-pos type="double">1</cowl-flaps-pos>
+      </engine>
+      <engine n="2">
+	<magnetos type="int">0</magnetos>
+	<rpm>0</rpm>
+	<running>false</running>
+	<boost type="bool">true</boost>
+	<oil-dilution type="bool">false</oil-dilution>
+	<cowl-flaps-cmd type="int">1</cowl-flaps-cmd>
+	<cowl-flaps-norm type="double">1</cowl-flaps-norm>
+	<cowl-flaps-pos type="double">1</cowl-flaps-pos>
+      </engine>
+      <engine n="3">
+	<magnetos type="int">0</magnetos>
+	<rpm>0</rpm>
+	<running>false</running>
+	<boost type="bool">true</boost>
+	<oil-dilution type="bool">false</oil-dilution>
+	<cowl-flaps-cmd type="int">1</cowl-flaps-cmd>
+	<cowl-flaps-norm type="double">1</cowl-flaps-norm>
+	<cowl-flaps-pos type="double">1</cowl-flaps-pos>
+      </engine>
+      <engine n="4">
+	<magnetos type="int">0</magnetos>
+	<rpm>0</rpm>
+	<running>false</running>
+	<boost type="bool">true</boost>
+	<oil-dilution type="bool">false</oil-dilution>
+	<cowl-flaps-cmd type="int">1</cowl-flaps-cmd>
+	<cowl-flaps-norm type="double">1</cowl-flaps-norm>
+	<cowl-flaps-pos type="double">1</cowl-flaps-pos>
+      </engine>
+      <engine n="5">
+	<magnetos type="int">0</magnetos>
+	<rpm>0</rpm>
+	<running>false</running>
+	<boost type="bool">true</boost>
+	<oil-dilution type="bool">false</oil-dilution>
+	<cowl-flaps-cmd type="int">1</cowl-flaps-cmd>
+	<cowl-flaps-norm type="double">1</cowl-flaps-norm>
+	<cowl-flaps-pos type="double">1</cowl-flaps-pos>
+      </engine>
+    </engines>
+
+    <gear>
+      <brake-parking type="double">1</brake-parking>
+    </gear>
+  </controls>
+ 
+
+  <!-- #### ai submodels -->
+
+  <input>
+    <keyboard include="Dialogs/Keyboard.xml"/>
+  </input>
+  
+  <!-- Voodoomaster plane specific initializations -->
+  <voodoomaster>
+    <steering-wheel type="int">2</steering-wheel>
+    <steering-type type="string">Taildragger-steer</steering-type>	<!-- Alternativ: Taildragger-lock or TriCycle -->
+    <pushback>
+      <activated type="bool">false</activated>
+    </pushback>
+  </voodoomaster>
+
+	<!-- all the nasal files in their namespaces -->
+  <nasal><doors>
+          <file>Nasal/doors.nas</file>
+      </doors>
+		<!-- voodoomaster>
+			<file>Aircraft/KingAir-350/Nasal/Pushback.nas</file>
+			<file>Aircraft/KingAir-350/Nasal/ground_handling.nas</file>
+			<file>Aircraft/KingAir-350/Nasal/mp-network.nas</file>
+		</voodoomaster -->
+		<kingair>
+			<file>Aircraft/KingAir-350/Nasal/kingair.nas</file>
+			<file>Aircraft/KingAir-350/Nasal/liveries.nas</file>
+			<file>Aircraft/KingAir-350/Nasal/lighting.nas</file>
+		</kingair>
+                <dialogs>
+                    <file>Nasal/dialogs.nas</file>
+                </dialogs>
+	<itaf>
+      <file>Aircraft/KingAir-350/Nasal/it-autoflight.nas</file>
+	</itaf>
+	</nasal>
+
+</PropertyList>

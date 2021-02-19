@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<PropertyList>
+	<name>options</name>
+    <layout>vbox</layout>
+	
+    <group>
+		<layout>hbox</layout>
+		<empty>
+			<stretch>1</stretch>
+		</empty>
+		<text>
+			<label>KingAir 350i Options</label>
+		</text>
+		<empty>
+			<stretch>1</stretch>
+		</empty>
+		<button>
+			<pref-width>12</pref-width>
+			<pref-height>12</pref-height>
+			<legend>X</legend>
+			<keynum>27</keynum>
+			<border>2</border>
+			<binding>
+				<command>dialog-close</command>
+			</binding>
+		</button>
+	</group>
+	
+	<hrule/>
+	<group>
+		<layout>vbox</layout>
+		<halign>left</halign>
+		<text>
+			<label>Window shades</label>
+		</text>
+            <slider>
+                <name>shader-slider</name>
+                <min>0</min>
+                <max>1</max>
+                <live>true</live>
+                <property>/controls/cabin/windowshader</property>
+                <binding>
+                    <command>dialog-apply</command>
+                    <name>shader-slider</name>
+                </binding>
+            </slider>	
+	</group>
+</PropertyList>
