@@ -12,8 +12,8 @@ License: GPL version 2+<br>
 :copyright: 2016-2017 GabrielYV <br>
 :copyright: 2016-2017 IAHM-COL <br>
 :copyright: 2015-2017 JWocky <br>
+:copyright: 2021- C-FWES <br>
 
-IMPORTANT: DO NOT USE FLAPS with AP: FDM is not stable with flaps down, and silly things happen!<br>
 
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License
